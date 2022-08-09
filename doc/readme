@@ -1,0 +1,434 @@
+	MicroEMACS version 4.00		Release Notes
+
+			22-Apr-96
+
+------------------------------------------------------------------------
+	(C)Copyright 1988-1996 by Daniel M. Lawrence
+	MicroEMACS 4.0 can be copied and distributed freely for any
+	non-commercial purposes. Commercial users may use MicroEMACS
+	4.0 inhouse. Shareware distributors may redistribute
+	MicroEMACS 4.0 for media costs only. MicroEMACS 4.0 can only
+	be incorporated into commercial software or resold with the
+	permission of the current author.
+------------------------------------------------------------------------
+	IBM-PC and OS/2 are copywrighted by International Business
+	Machines, INC. MSDOS and MicroSoft Windows are copyrighted by
+	Microsoft Inc. AMIGA is copywrited by Commodore Business
+	Machines. Atari ST is copyrighted by Atari Coorporation. All
+	other product names used within this document are copyrighted by
+	their respective copyright holders. 
+----------------------------------------------------------------------
+
+	This is the official release of version 4.0 of MicroEMACS. This
+file gives information on registering MicroEMACS, features which have
+changed since version 3.12, notes on various installations, future
+directions for MicroEMACS, contact information and bug reporting
+procedures.
+
+********** Registering MicroEMACS **********
+
+	Keeping many environments up to date, fielding questions over
+the phone, applying bug fixes and adding new features is reasonably
+large task. I have been writing, maintaining and supporting MicroEMACS
+since 1985. I have bought numerous computers solely to port and support
+MicroEMACS on those platforms. I can not even begin to count the number
+of people using MicroEMACS, and I have recieved support calls,
+registrations and inquiries from many countries all over the globe. This
+keeps me very busy for a hobby that I do outside my normal employment.
+	If you like MicroEMACS, and want to see more work, new versions
+and other shareware software to go along with it, show your support by
+registering your copy. Send your registration of $25 US and I will place
+you on the registration list. You will recieve information on new
+releases and preferential support. If you have recieved MicroEMACS
+through a software library, a CDROM collection, or a user's group, none
+of those fees are passed along to the software author. Register with me
+and get the latest versions, info and have a voice into future
+directions.
+
+********** Installation Notes **************
+
+	MicroEMACS is supplied for MSDOS/OS2/WINDOWS 95/WINDOWS NT on
+two 3 1/2" inch diskettes in IBMPC format. The first disk is an MSDOS,
+MicroSoft Windows 95/Windows NT and OS/2 installation disk. For any of
+these environments, insert the disk into your A: drive, and type:
+
+	a:install
+
+	The installation program will lead you through installing
+MicroEMACS and all of its related files on your system's hard drive.
+After installation, these are the names of the various executables:
+
+	EMACS.EXE	MSDOS real mode version (640K limit)
+	EMACS16M.EXE	MSDOS protected mode version
+			(will use all memory, slightly slower than real mode)
+	MEWIN.EXE	MicroSoft Windows 3.1 version
+	OS2EMACS.EXE	OS/2 1.3, 2.0 or 2.1 version
+	NTEMACS.EXE	Windows NT console mode version
+
+	The second disk is a ZIP archive of all the sources, documents,
+command files and makefiles. Copy this file to an empty directory on
+your hard drive, and then use any unZIPper and allow it to extract this
+tree of files on your hard drive. Some of the resulting files and
+subdirectories will include:
+
+AIX          makefiles for AIX (a UNIX varient)
+AMIGA        makefiles for the Commodore AMIGA
+ATARI        makefiles for the Atari ST
+CMD          standard .CMD command files
+DGEN         makefiles for the Data General
+DOC          documentation files (including this!)
+FREEBSD      makefiles for FREEBSD 2.0 and above
+FMR          makefiles for the Fujitsu FMR series MSDOS computers
+H            .H header files
+HP150        makefile for the HP150 MSDOS computer
+HPUX         makefile for the HP9000 workstations
+I55          makefile for the IBM 5550 Katakana computer
+MPE          makefile for the HP3000 series computer
+MSWIN        makefiles and auxillary files for MicroSoft Windows 95
+NEC          makefiles for the NEC 9800 series MSDOS machines
+NT           makefiles for Windows NT
+OS2          makefiles for OS/2
+PCDOS        makefiles for various IBM-PC compilers and versions
+POSIX        makefiles for POSIX (a UNIX varient)
+SRC          .C source files
+SUN4         makefiles for SUN-OS 4.1 and above (not Solaris)
+VMS          makefile for DEC's VMS operating system
+WINHELP      source code for the windows help files
+XENIX        makefiles for XENIX
+CLROBJ.BAT   MSDOS batch file to clear out all the object and executable files
+
+	Included on this disk is a public domain MSDOS unzipping program
+called "unzip" written by a group of USENET programmers. Both the actual
+executable and the self unpacking package with all of its documention is
+provided. Copy the diskette to the target directory, and type:
+
+	unzip ue400dev
+
+	to extract all the sources, command files, makefiles and
+documentation to their proper directories within the that directory.
+
+	If you need to build a version from the source files, unpack
+these files, and move them and all its subdirectories to the target
+machine. Change to the directory most appropriate for the machine for
+which you are building MicroEMACS. Copy from the H subdirectory the file
+ESTRUCT.H to this directory. Edit ESTRUCT.H, changing the definition
+from zero to one for the appropriate hardware, compiler, terminal
+driver. Edit any other parameters or options as appropriate. You may
+need to create an OBJ and a BIN subdirectory from this directory. Then
+run your make utility to compile and link a MicroEMACS executable.
+
+	Under MicroSoft Windows, or Windows NT, use the NEW option of the
+FILES menu of the file program manager to add a program item. Set the
+program executable to the drive where you installed MicroEMACS,
+remembering the name of the Windows executable is mewin.exe. The
+MicroEMACS icon will appear in the program window you have currently
+open.
+
+	Under Windows 95, or the newer versions of Windows NT (Version
+4.0 and above), press the START button, select SETTINGS and then select
+TASKBAR. Once within this dialog, use it to add an entry in your program
+menu to execute the MicroEMACS executable file. Windows 95 will handle
+all the needed memory settings.
+
+	Under OS/2, copy a program template to the desktop, and then use
+its settings menu to set the path to the program executable and the
+correct working directory. The name of the OS/2 executable is
+OS2EMACS.EXE. The icon for MicroEMACS should replace the template icon.
+Drag this to where you want it to be placed.
+
+	Under the differing varieties of UNIX, if you are installing
+MicroEMACS systemwide, you need to place it and all of its command files
+into a directory that all your users can access. Rename the emacs.rc
+startup file to .emacsrc. Once your users have this directory in their
+path, they will be able to use MicroEMACS. They can create a local
+.emacsrc file that will overide the code in the system MicroEMACS
+startup file. Be carefull to allow read permissions on all the
+MicroEMACS files.
+
+	On the Atari ST, be sure that MicroEMACS is installed as a GEM
+application from the GEM desktop.  If this is not done, MicroEMACS will
+grow confused about the state of the mouse, and ring the bell alot to
+alert the user to the problem.  (Mouse handling on the Atari is both
+complex and triple layered....).
+
+********** Edit history since the First 4.00 BETA release
+
+ *	29 Mar 95
+ *	- at John Gamble's suggestion, we have eliminated the need of the
+ *	  makelit() function, making uEMACS 682 bytes smaller under MSDOS!
+ *	- made the ldelete() function flag the position of saved text at
+ *	  the front of the string when deleteing backwards. This fixes some
+ *	  problems with undos of backward deleted text.
+ *	- made the delete-previous-word (M-^H) command push a OP_CPOS
+ *	  on the stack so an undo of it works properly.
+ *	- rewrote the macroes in epage.cmd not to use numbered macroes.
+ *	4 apr 95
+ *	- increased the buffer name max size to 128.... to match the user
+ *	  variables and everything else in the expresion evaluator.
+ *	- a missing long cast in abbrev.c in ab_expand() cause problems
+ *	  in 23 bit environments. All fixed.
+ *	- replaced all calls to realloc() to reroom() to allow the old
+ *	  undo info to be reclaimed on failure.
+ *	- some fixes in main.c dealing with REP and OVER modes allowing
+ *	  inserts of characters with repeat counts in these mores to work,
+ *	  as given to me by John Gamble.
+ *	- a laborious hour long process to fix the indentation of braces
+ *	  in main.c. Clearly anyone who prefers their own style should
+ *	  keep their hands off my code. This screws with my mind and with
+ *	  our every attempt to provide diffs.
+ *	6 apr 95
+ *	- fixed the OVER and REP mode code to store a cursor position
+ *	  undo entry to get the cursor position correct on undos.
+ *	- dumped the DOS16M symbol now that the reroom() routine
+ *	  replaces realloc() and it checks for a null pointer, making
+ *	  sure there are no attempts to realloc() a null pointer.
+ *	[April 10, 1995 - released version 4.0 BETA 2 for beta testing]
+ *	6 may 95 John Gamble
+ *	- Cleaned up code dealing with MAGIC (the compile option) == 0.
+ *	  Affects tag.c, eval.c, search.c and replace.c.
+ *	- linstr() checks for empty strings now.  This prevents adding
+ *	  an uneeded UNDO object.
+ *	- getctext() was using a local array as a return value.  This
+ *	  is a no-no.  It now takes an array as an argument, and returns
+ *	  that.
+ *	- $disphigh was not being checked for most column calculator
+ *	  functions.  The cursor was getting misplaced as a result.
+ *	  Added checks in mouse.c and random.c.  Removed some duplicate
+ *	  code in display.c as a result (updpos() now just calls getccol()).
+ *	- Search now highlights the match on the screen.  Uses mark # 10,
+ *	  which means it is on by default.  Change $hilight to prevent this,
+ *	  or compile with a different mark number.
+ *	- WIN3.0 support dropped.  Affects files mswin.h, mswemacs.c,
+ *	  mswfont.c, mswdrv.c, mswinput.c.
+ *	- Title and version now on the Windows title bar.  Change in mswsys.c.
+ *	  No longer put title and version on modeline for Windows version.
+ *	- Magenta and Lmagenta had identical values in the palette array.
+ *	  Changed Lmagenta.  Also, Yellow and Lyellow were nearly
+ *	  indistinguishable.  Altered both values in mswdisp.c.
+ *	- changed a "select-buffer "Function Keys"" line in emacs.rc to
+ *	  "1 select-buffer "Function Keys""  to ensure the buffer is
+ *	  always invisible in Windows.
+ *	- New mdi.cmd takes advantage of $newscreen - no more "Relay Screen"
+ *	  flashing for reading files (screen rebuild still uses it though).
+ *	27 may 1995 John Gamble
+ *	- The function scanner() goes away - mcscanner can handle jump
+ *	  tables, and uses the special MC structs mcdeltapat and tapatledcm
+ *	  for that purpose.  (scanner() actually sticks around for those
+ *	  who compile MicroEMACS without a magic mode, there's a #define).
+ *	- Variable numsubs in replaces() is type long now.  TEXT92 in all
+ *	  language files has the %d changed to %D.
+ *	- MS-Windows version now reads and writes to EMACS.INI, not WIN.INI.
+ *	- EMACS.INI also has a new entry CaretShape, which may be set
+ *	  to values "horizontal", "vertical", or "fullcell".  This had
+ *	  been a compile option in mswin.h, now it is a settable ini value.
+ *	- Making a buffer INVISIBLE was also marking it as changed if you
+ *	  did it by setting $cbflags.  Bug in eval.c is now fixed.
+ *	- New compile const HANDLE_WINCH for telling which machines
+ *	  handle the windows-changed signal.
+ *	- Put in Eric Picheral's suggested changes:
+ *	  o GNU has a getkey/setkey combo... change ours to [gs]et_key().
+ *	  o wordcount() was checking hard-coded letter values, now it
+ *	    uses is_letter().
+ *	  o Added USG and the HPUXes to the NFILEN condtion in estruct.h.
+ *	  o Put an unsigned char cast in lgetc() macro for some Unixes.
+ *	  o variable uv_head was misspelled ut_head in main.c.
+ *	  o Added WINDOW_MSWIN and AIX to list to include frenchis.h over
+ *	    french.h in elang.h.
+ *	  o New french.h and frenchis.h files.
+ *	31 May 95 Daniel Lawrence
+ *	- re-ported current version to Windows NT. Fixed makefile to work with
+ *	  visual C++ 2.0. Set PAUSE key to generate FN: and bound it to
+ *	  execute-command-line. Set to ignore scroll lock key.
+ *	- got rid of a lot of unreferenced local variables
+ *	9 June 95
+ *	- modified &cat to never overwrite its buffer
+ *	15 June 95
+ *	- added $popwait, which when false suppresses the user input during
+ *	  a pop-up buffer (for macroes!)
+ *	17 June 95
+ *	- bumped the maximum number of rows under windows up to 128 from 50.
+ *	- get the true length of the pattern rather than using matchlen
+ *	  while in MAGIC mode, as submitted by Frank Kaefer.
+ *	18 June 95 John Gamble
+ *	- New functions &mkcol and &mkline respectively return the column
+ *	  number and line number of mark n, if n is valid and exists.
+ *	  They return -1 and 0 otherwise.
+ *	- Bruce Momjian's mark fix for including text wasn't completely
+ *	  implemented, added the second portion that he posted.
+ *	10 Sept 95 John Gamble
+ *	- added add-keymap and list-keymappings to commands.  Code
+ *	  that formerly was duplicated in ansi.c, mpe.c, unix.c, smg.c,
+ *	  vms.c gets consolidated into keyboard.c.  Command add-keymap
+ *	  exists to replace the set $palette "KEYMAP ..." strangeness,
+ *	  list-keymappings displays what's been mapped in a popped buffer.
+ *	18 Nov 95 Daniel Lawrence
+ *	- moved the prototyping for the new keymapping functions from
+ *	  eproto.h backtokeybaoard.c. The needed structures for their
+ *	  declarations were not even defined for non-unix environments.
+ *	- bug in file.c in the unix code caused the wrong buffer to be
+ *	  marked as read-only when there was no file access. Fixed it.
+ *	- in undo() it was possible to execute undo_op() even when the
+ *	  endo stack was empty. This caused a zero pointer reference.
+ *	  This is now fixed.
+ *	29 Dec 95
+ *	- added 2 calls to movecursor (in echostring() and mlprompt())
+ *	  to make sure the physical cursor is updated to the logical cursor.
+ *	  This had been a problem in the Windows NT driver.......
+ *	- some lowercase "void" function declarations in eval.c, screen.c
+ *	  and undo.c has to be made "VOID". The SUN showed is this.
+
+********** Major New Features since 3.12 *********
+
+>>>	Multilevel UNDO command
+
+	The new undo (^_) command undos editing changes since the last
+buffer read in each editing buffer. Various commands and environment
+variables support this new highly requested feature.
+
+>>>	Search commands enhanced
+
+	All the various search commands now hilite the results of their
+search on success.
+
+>>>	Enhancement to the macro language
+
+	Local and Global user variables are now supported. Also, stored
+functions can now have parameters which are call by value.
+
+>>>	Windows 95 enhancements
+
+	Bringing up new screens in windows has been simplified, no longer
+needing a "relay screen". MicroEMACS now has its own EMACS.INI file instead
+of listing its options in WIN.INI.
+
+>>>	Abbreviation Features added
+
+	New commands, environment variables and functions added to
+handle the automatic expansion of abbreviations as they are typed into a
+text buffer.
+
+>>>	Magic Mode Enhancements
+
+	New meta characters in magic mode allow the matching to the
+beginning and end of words. Added the Boyer-Moore algorithm to the MAGIC
+mode searches where literal characters are in the search pattern.
+
+>>>	Unix keymapping layer enhanced
+
+	The layer responcible for mapping escape sequences to bindings
+has been rewritten,and now the commands add-keymap and list-keymappings
+are active in those environments.
+
+>>>	FREEBSD support
+
+	Support for FREEBSD 2.0 and greater running on a 386 PC or
+higher is now complete.
+
+>>>	XVT driver
+
+	Support for the XVT portible windowing system is included. This
+has been tested under MicroSoft windows.
+
+>>>	Bug Fixes
+
+	As usual.... most of the bugs pointed out in version 3.12 have
+been thoroughly squashed.
+
+********** Online Documents ****************
+
+	The Windows help file and the TEXT online documents have been
+partially updated for the 4.0 release. I found finishing the online
+documents has been holding up the release for far too long, so I will
+promise to have the online documents updated with the next minor
+release. 
+
+********** Future Directions ***************
+
+	I am continuing work on MicroEMACS, and look forward to a number
+of improvements in the near to farther future. Ranked in approximate
+order are:
+
+	- Macintosh Support
+	- An OS/2 Presentation Manager version
+	- A possible VI user interface (MicroVImacs)
+
+********** Contact Information *************
+
+To contact me: (MicroEMACS)
+
+	USMAIL:	Daniel Lawrence
+		617 New York St
+		Lafayette, IN 47901 USA
+	
+	Internet:	dan@aquest.com
+	
+	BBS:	AQUEST.COM dialup access
+		(317) 742-5533
+		login: uemacs
+		password: support
+	
+	voice:	(317) 742-5153 evenings and weekends
+
+To contact Tenburry Systems Inc.: (DOS16M Dos Extender)
+
+	Tennbury Systems Inc.
+	220 North Main Street
+	Natick, Massachusette 01760
+	(508)653-6006
+
+To contact Knowledge Dynamics Corporation: (INSTALL 3.2 Installation program)
+
+	Knowledge Dynamics Corporation
+	P.O. Box 1558
+	Canyon Lake, TX 78130-1558 (USA)
+
+********** Reporting Bugs ******************
+
+If you need to report any bugs, you should be sure to include the this
+information:
+
+- Contact info of the reporter
+
+- Hardware where the bug manifests itself
+
+- Operating System and OS version number
+
+- a list of the ESTRUCT.H switches used to compile effected version
+	or file name of distributed .exe
+
+- compiler and makefile used to compile MicroEMACS
+
+- a clear, step by step method to reproduce the problem
+  any pertinate macro code or text files used
+
+- Under MSDOS:
+	- a list of any concurrent software (TSRs, etc)
+	- a copy of the autoexec.bat and config.sys files
+
+********** Support *************************
+
+	Support for MicroEMACS 4.0 is available in a couple of
+different ways.  First, it is available via my unix system..... 
+
+	AQUEST.COM
+	(317) 742-5533
+	24 hours  300/1200/2400/9600HST/14400 baud
+
+	user: uemacs
+	password: support
+
+	There will be message areas devoted to MicroEMACS where I and
+other people can answer your questions. Also there are file areas for
+staying abreast of the current development version and finding and
+trading macro files.
+
+	MicroSPELL 2.1 is also available.  This version is the first
+major update released in several years. These program allows you to
+spell check text files and use MicroEMACS to scan the file, making
+suggestions and doing various corrections.
+
+	As before, I will continue to support these programs, and
+encourage everyone to spread them around as much as they can. If you
+make what you think are changes that are useful to many, send me the
+updates, and as time permits, I will incorporate the ones I understand,
+and agree with into the master sources.
